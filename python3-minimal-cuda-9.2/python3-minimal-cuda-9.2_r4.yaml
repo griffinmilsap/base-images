@@ -1,37 +1,38 @@
-cuda_version: '9.0'
+cuda_version: '9.2'
 description: A minimal Base containing Python 3.7 and JupyterLab with NVIDIA GPU support
-  via CUDA 9.0
+  via CUDA 9.2
 development_tools:
 - jupyterlab
 - notebook
-id: python3-minimal-cuda-9.0
+id: python3-minimal-cuda-9.2
+revision: 4
 image:
   namespace: gigantum
-  repository: python3-minimal-cuda-9.0
+  repository: python3-minimal-cuda-9.2
   server: hub.docker.com
-  tag: f086714bd9-2019-12-18
+  tag: 71e9f472fc-2020-06-26
 languages:
 - python3
 license: MIT
-name: Python3 Minimal w/ CUDA 9.0
+name: Python3 Minimal w/ CUDA 9.2
 os_class: ubuntu
-os_release: '16.04'
+os_release: '18.04'
 package_managers:
 - pip: null
 - conda3: null
 - apt: null
 readme: |
-  A minimal Base containing Python 3.7 and JupyterLab with NVIDIA GPU support via CUDA 9.0
+  A minimal Base containing Python 3.7 and JupyterLab with NVIDIA GPU support
+  via CUDA 9.2
 
-  This base built from nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
+  This base built from nvidia/cuda:9.2-cudnn7-runtime-ubuntu18.04
 
-  If you run this Base on a host with NVIDIA drivers installed that support CUDA 9.0, the GPUs will
-  be available in your Project.
+  If you run this Base on a host with NVIDIA drivers installed that support
+  CUDA 9.2, the GPUs will be available in your Project.
 
   The following JupyterLab widgets are configured:
     - @jupyterlab/toc
-    - @jupyterlab/statusbar
-revision: 3
+    - nbresuse to enable memory usage in the status bar
 schema: 1
 tags:
 - ubuntu
