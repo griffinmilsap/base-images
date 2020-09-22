@@ -1,10 +1,23 @@
 # Copyright (c) Gigantum
 
-# The below is a relatively straightforward adaptation of directions at
-# https://cran.r-project.org/bin/linux/ubuntu/README.html
-
-FROM gigantum/r-tidyverse:f086714bd9-2019-12-18
+FROM gigantum/r-tidyverse:b4b4d267e0-2020-06-29
 LABEL maintainer="Gigantum <support@gigantum.com>"
+
+# downloading GPG keys is problematic, so we use the sha256 hash
+# There are numerous potential issues with gpg in Docker, including firewalls
+# that block all but web ports, and broken ipv6
+
+# Using variables mostly to make it obvious what needs to be updated in future
+ENV RSTUDIO_SHA256=187af05cab1221282487fdc33f4b161484c3228eaade3d6697b1d41c206ee6d9 \
+    RSTUDIO_VER=1.3.959
+
+RUN curl --silent --show-error --location \
+         --output rstudio-server-${RSTUDIO_VER}-amd64.deb \
+         https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${RSTUDIO_VER}-amd64.deb \
+    && echo $RSTUDIO_SHA256 rstudio-server-${RSTUDIO_VER}-amd64.deb | sha256sum -c \
+    && apt-get install -yq ./rstudio-server-*-amd64.deb \
+    && apt-get clean \
+    && rm rstudio-server-*-amd64.deb
 
 # Install system level dependencies
 RUN apt-get update \
@@ -13,20 +26,6 @@ RUN apt-get update \
         r-cran-catools \
         r-cran-bitops \
     && apt-get clean
-
-# downloading the GPG key for RStudio is problematic, so we use the md5 hash
-# There are numerous potential issues with gpg, including firewalls that block
-# all but web ports, and broken ipv6
-
-# Using variables mostly to make it obvious what needs to be updated in future
-ENV RSTUDIO_SHA256=62b1fb2f6f48342518d75b6efb6e721b5a49991d1642e3b879e4c5ed03cee875 \
-    RSTUDIO_VER=1.2.5033
-
-RUN wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-${RSTUDIO_VER}-amd64.deb \
-    && echo $RSTUDIO_SHA256 rstudio-server-${RSTUDIO_VER}-amd64.deb | sha256sum -c \
-    && apt-get install -yq --no-install-recommends ./rstudio-server-*-amd64.deb \
-    && apt-get clean \
-    && rm rstudio-server-*-amd64.deb
 
 # Expose port for RStudio
 EXPOSE 8787

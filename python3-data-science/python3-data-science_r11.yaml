@@ -1,14 +1,14 @@
-description: A Base containing Python 3.7, JupyterLab, and common data science packages
-  pre-installed
+description: A Base containing Python 3.7, JupyterLab, and common data science packages pre-installed
 development_tools:
 - jupyterlab
 - notebook
 id: python3-data-science
+revision: 11
 image:
   namespace: gigantum
   repository: python3-data-science
   server: hub.docker.com
-  tag: a3aa5a9847-2019-12-19
+  tag: b4b4d267e0-2020-06-29
 languages:
 - python3
 license: MIT
@@ -18,34 +18,34 @@ os_release: '18.04'
 package_managers:
 - pip: null
 - conda3:
-  - bokeh=1.4*
-  - cloudpickle=1.2*
+  - bokeh=2.1*
+  - cloudpickle=1.4*
   - cython=0.29*
-  - dask-core=2.9*
+  - dask-core=2.19*
   - dill=0.3*
   - h5py=2.10*
   - hdf5=1.10*
   - ipywidgets=7.5*
-  - matplotlib=3.1*
+  - matplotlib=3.2*
   - networkx=2.4*
-  - numba=0.46*
+  - numba=0.48*
   - numexpr=2.7*
-  - numpy=1.17*
-  - pandas=0.25*
+  - numpy=1.18*
+  - pandas=1.0*
   - patsy=0.5*
-  - pillow=6.2*
-  - plotly=4.4*
-  - plotly-orca=1.2*
+  - pillow=7.1*
+  - plotly=4.8*
+  - psutil=5.7*
   - pywavelets=1.1*
-  - pyyaml=5.2*
-  - scikit-image=0.16*
-  - scikit-learn=0.22*
-  - scipy=1.3*
-  - seaborn=0.9*
+  - pyyaml=5.3*
+  - scikit-image=0.17*
+  - scikit-learn=0.23*
+  - scipy=1.4*
+  - seaborn=0.10*
   - sqlalchemy=1.3*
-  - statsmodels=0.10*
-  - sympy=1.5*
-  - xarray=0.14*
+  - statsmodels=0.11*
+  - sympy=1.6*
+  - xarray=0.15*
   - xlrd=1.2*
 - apt:
   - libxrender1
@@ -60,7 +60,6 @@ readme: |
    - jupyterlab_bokeh
    - @jupyterlab/geojson-extension
    - plotlywidget & jupyterlab-plotly
-revision: 10
 schema: 1
 tags:
 - ubuntu
