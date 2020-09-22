@@ -10,7 +10,7 @@ image:
   server: hub.docker.com
   namespace: griffinmilsap
   repository: python3-minimal-cuda-devel-10.1
-  tag: 5c15ee687e-2020-09-22
+  tag: 939b5b6b68-2020-09-22
 languages:
 - python3
 license: MIT
