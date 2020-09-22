@@ -8,7 +8,7 @@ id: python3-minimal-cuda-devel-10.1
 revision: 1
 image:
   server: hub.docker.com
-  namespace: griffinmilsap/python3-minimal-cuda-devel-10.1
+  namespace: griffinmilsap
   repository: python3-minimal-cuda-devel-10.1
   tag: d3db23726a-2020-09-22
 languages:
